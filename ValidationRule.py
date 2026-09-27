@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Dict, List
+from PCComponent import PCComponent
+from PCComponent import Case, GPU, MotherBoard, CPU, RAM, Cooler, Storage, PSU
 
 
 class ValidationRule(ABC):
