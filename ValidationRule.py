@@ -75,11 +75,11 @@ class PowerSupplyRule(ValidationRule):
         return errors
 
 
-class MotherboardCompatibilityRule(ValidationRule):
+class MotherBoardCompatibilityRule(ValidationRule):
     def validate(self, build_components: Dict[str, PCComponent]) -> List[str]:
         errors = []
 
-        mb: Motherboard = build_components.get("Motherboard")
+        mb: MotherBoard = build_components.get("Motherboard")
         if not mb:
             return errors
 
@@ -123,7 +123,7 @@ class CaseClearanceRule(ValidationRule):
             return errors
 
         gpu: GPU = build_components.get("GPU")
-        mb: Motherboard = build_components.get("Motherboard")
+        mb: MotherBoard = build_components.get("Motherboard")
 
         if gpu:
             if gpu.length_mm > pc_case.max_gpu_length_mm:
@@ -146,7 +146,7 @@ class StorageCompatibilityRule(ValidationRule):
     def validate(self, build_components: Dict[str, PCComponent]) -> List[str]:
         errors = []
 
-        mb: Motherboard = build_components.get("Motherboard")
+        mb: MotherBoard = build_components.get("Motherboard")
         pc_case: Case = build_components.get("Case")
 
         m2_count = 0
