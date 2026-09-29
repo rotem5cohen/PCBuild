@@ -24,6 +24,20 @@ Components are instantiated as objects containing only logic-relevant physical a
 
 ```python
 from PCComponent import CPU, GPU, MotherBoard, Case, PSU
+from PCBuild import PCBuild
 
 cpu = CPU(brand="Intel", model="Core i5-14600K", price=1350, power_draw_w=125, socket="LGA 1700")
 gpu = GPU(brand="AMD", model="Radeon RX 9070 XT", price=2800, power_draw_w=275, length_mm=320, power_connectors={"8-pin PCIe": 2})
+
+my_build = PCBuild()
+my_build.add_component(cpu)
+my_build.add_component(gpu)
+
+# Executes all active ValidationRules (Power, Clearance, Socket compatibility)
+errors = my_build.validate_all()
+
+if not errors:
+    print("Build is 100% compatible!")
+else:
+    for err in errors:
+        print(f"Error: {err}")
