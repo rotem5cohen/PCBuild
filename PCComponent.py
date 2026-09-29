@@ -55,7 +55,7 @@ class MotherBoard(PCComponent):
                  socket: str, form_factor: str, supported_ram_type: str,
                  ram_slots: int, pcie_x16_slots: int,
                   m2_slots: int, sata_ports: int):
-        super().__init__(self, brand, model, price, power_draw_w)
+        super().__init__(brand, model, price, power_draw_w)
 
         self.socket = socket
         self.form_factor = form_factor
